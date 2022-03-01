@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace Interfaces.Shapes
 {
-    public class Square : IShape
+    internal class Square : IShape, IColour
     {
         public int Height { get; set; }
         public int Width { get; set; }
-
-        public Square(int height, int width)
+        public Colours Colour { get; set; }
+        public Square(int Height, int Width, Colours Colour)
         {
-            this.Height = height;
-            this.Width = width;
+            this.Height = Height;
+            this.Width = Width;
+            this.Colour = Colour;
         }
 
         public string Area()
         {
-            return $"Answer: ${Width * Height}";
+            return $"Area of Square: {Width * Height}";
+        }
+
+        override
+        public string ToString()
+        {
+            return $"Square is {Height}l and {Width}w with a Colour of {Colour}";
         }
     }
 }
